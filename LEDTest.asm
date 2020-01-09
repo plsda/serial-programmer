@@ -1,10 +1,11 @@
-.org 0x000B ;0x0016 
+.org 0x0000		;RESET interrupt
+  	jmp start
+
+.org 0x000B 	;Timer interrupt
 	jmp TIMER1_COMPA
 
 
-
-
-.org 0x0040;0x0033 ;0x001A 			        ;End of the interrupt vector table
+.org 0x0040    ;End of the interrupt vector table
 start:
 	ldi r16, 1
 
@@ -20,8 +21,7 @@ start:
 	ori r16, ( 1 << CS11 )
 	
 	;ori r16, (1 << CS12)			//clk/256
-	
-    ;ori r16, (1 << CS10)			//clk/1024
+   ;ori r16, (1 << CS10)			//clk/1024
 	;ori r16, (1 << CS12)
 
 	ori r16, ( 1 << WGM12)
